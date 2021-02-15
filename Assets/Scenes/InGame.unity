@@ -257,15 +257,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1022790301
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 27f8bdb9831b1b54bb40c2793c9ddf02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1024, y: 768}
+  m_Size: {x: 10.24, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -557,8 +557,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24496d9ceec13ff41965b9b0246dde87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 949446414628713959, guid: 70e90966af261864d8dec33224039bd3,
-    type: 3}
+  Card: {fileID: 949446414628713959, guid: 70e90966af261864d8dec33224039bd3, type: 3}
+  cardFaces:
+  - {fileID: 21300000, guid: 04b7e68eb5005a84da00bba8a41d9d55, type: 3}
+  - {fileID: 21300000, guid: d38df1d7c34a229418bb1d0d03643d1b, type: 3}
+  - {fileID: 21300000, guid: f702f0ec648fc274588c121e14d4add3, type: 3}
+  - {fileID: 21300000, guid: e0d0e23f18c2132429e151d8d4527c3d, type: 3}
+  - {fileID: 21300000, guid: a9229173601f1864887272d907167914, type: 3}
+  - {fileID: 21300000, guid: 177c44c5361bd1a43a6b72ce36b88f69, type: 3}
+  - {fileID: 21300000, guid: 5c978331ba35b894d889fd0413638161, type: 3}
+  - {fileID: 21300000, guid: b17e7cc5b7146db4db187d45d3d2316c, type: 3}
+  cardBack: {fileID: 21300000, guid: aab8efc591d07ea45958630105129de7, type: 3}
 --- !u!4 &2088080148
 Transform:
   m_ObjectHideFlags: 0

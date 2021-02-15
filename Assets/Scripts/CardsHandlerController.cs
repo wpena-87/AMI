@@ -4,22 +4,40 @@ using UnityEngine;
 
 public class CardsHandlerController : MonoBehaviour
 {
-    public GameObject cardPrefab;
-
+    public GameObject Card;
+    public Sprite[] cardFaces;
+    public Sprite cardBack;
+    static System.Random random = new System.Random();
     
     void Start()
     {
+        List<Sprite> shuffledFaces = new List<Sprite>();
+        for (int i = 0; i < 4; i++)
+        {
+            Sprite face = cardFaces[random.Next(cardFaces.Length)];
+            while (shuffledFaces.Contains(face))
+            {
+                face = cardFaces[random.Next(cardFaces.Length)];
+            }
+            shuffledFaces.Add(face);
+            shuffledFaces.Insert(random.Next(shuffledFaces.Count), face);
+        }
+
         int x = -357;
         int y =  198;
-        for (int i = 0; i < 8; i++)
+        
+        int k = 0;
+        foreach (Sprite face in shuffledFaces)
         {
-            Instantiate(cardPrefab, new Vector3(x, y, 0), new Quaternion());
+            GameObject card = Instantiate(Card, new Vector3(x, y, 0), new Quaternion());
+            card.GetComponent<CardController>().setFace(face);
             x += 200;
-            if (i == 3)
+            if (k == 3)
             {
                 x = -357;
                 y = - 52;
             }
+            k++;
         }
         
     }

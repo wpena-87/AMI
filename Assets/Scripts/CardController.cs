@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Sprite face;
+    Sprite back;
+    SpriteRenderer spriteRenderer;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void OnMouseDown()
     {
-        Debug.Log("Click!");
+        spriteRenderer.sprite = face;
+    }
+
+    public void setFace(Sprite face)
+    {
+        this.face = face;
+    }
+
+    public void setBack(Sprite back)
+    {
+        this.back = back;
     }
 }
