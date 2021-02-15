@@ -36,11 +36,18 @@ public class Card : MonoBehaviour
             spriteRenderer.sprite = face;
             shownCards.Add(this);
         }
+
         if (shownCards.Count == 2 && shownCards[0].face == shownCards[1].face)
         {
             shownCards[0].matched = true;
             shownCards[1].matched = true;
             shownCards.Clear();
+            ScoreManager.RaiseScore(25);
+        }
+
+        if (ScoreManager.GetScore() == 100)
+        {
+            Debug.Log("Game Over!");
         }
     }
 
