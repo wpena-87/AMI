@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 1834031344}
   - component: {fileID: 1834031343}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: -320.12}
+  m_AnchoredPosition: {x: 128, y: -320.12}
   m_SizeDelta: {x: 448.7533, y: 127.75307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834031343
@@ -519,7 +519,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Puntaje: 150'
+  m_Text: 'Score: 150'
 --- !u!222 &1834031344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 2088080148}
   - component: {fileID: 2088080147}
   m_Layer: 0
-  m_Name: CardsHandler
+  m_Name: CardsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
