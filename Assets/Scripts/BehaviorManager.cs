@@ -28,14 +28,10 @@ public class BehaviorManager : MonoBehaviour
     private void Move()
     {
         Vector3 xSpeed = new Vector3(1000 * Time.deltaTime, 0, 0);
-        if (logo.GetComponent<RectTransform>().position.x < 512)
+        if (logo.GetComponent<RectTransform>().localPosition.x < 0)
         {
-            logo.GetComponent<RectTransform>().position += xSpeed;
-            label.GetComponent<RectTransform>().position -= xSpeed;
-        }
-        else
-        {
-
+            logo.GetComponent<RectTransform>().localPosition += xSpeed;
+            label.GetComponent<RectTransform>().localPosition -= xSpeed;
         }
     }
 
