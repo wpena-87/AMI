@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     
-    private static int score = 0;
+    private static float score = 0;
     private static Text scoreText;
     private static ScoreManager instance;
 
@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    public static void RaiseScore(int points)
+    public static void RaiseScore(float points)
     {
         score += points;
         RefreshScoreText();
@@ -44,7 +44,7 @@ public class ScoreManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
-    public static int GetScore()
+    public static float GetScore()
     {
         return score;
     }
