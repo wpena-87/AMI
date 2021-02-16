@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
 
     static List<Card> shownCards = new List<Card>();
 
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -46,6 +47,20 @@ public class Card : MonoBehaviour
         }
     }
 
+    private void Disappear()
+    {
+
+        if (gameObject.GetComponent<Transform>().localScale.x > 0)
+        {
+            gameObject.GetComponent<Transform>().localScale -= 3 * Vector3.one * Time.deltaTime;
+        }
+        else
+        {
+            gameObject.GetComponent<Transform>().localScale = Vector3.zero;
+        }
+        
+    }
+
     public void setFace(Sprite face)
     {
         this.face = face;
@@ -54,5 +69,13 @@ public class Card : MonoBehaviour
     public void setBack(Sprite back)
     {
         this.back = back;
+    }
+
+    private void Update()
+    {
+        if (matched)
+        {
+            Disappear();
+        }
     }
 }
