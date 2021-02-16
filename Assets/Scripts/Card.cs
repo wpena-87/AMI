@@ -44,11 +44,6 @@ public class Card : MonoBehaviour
             shownCards.Clear();
             ScoreManager.RaiseScore(25);
         }
-
-        if (ScoreManager.GetScore() == 100)
-        {
-            Debug.Log("Game Over!");
-        }
     }
 
     public void setFace(Sprite face)

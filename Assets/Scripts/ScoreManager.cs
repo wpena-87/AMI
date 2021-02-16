@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -24,13 +25,11 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
         RefreshScoreText();
+        
+        if (score == 100)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
-
-    public static int GetScore()
-    {
-        return score;
-    }
-
-
     
 }
