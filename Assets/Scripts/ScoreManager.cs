@@ -9,11 +9,11 @@ public class ScoreManager : MonoBehaviour
     
     private static int score = 0;
     private static Text scoreText;
-    private static ScoreManager self;
+    private static ScoreManager instance;
 
     private void Awake()
     {
-        self = this;
+        instance = this;
     }
 
     void Start()
@@ -34,14 +34,18 @@ public class ScoreManager : MonoBehaviour
         
         if (score == 100)
         {
-            self.StartCoroutine(GameOver());
+            instance.StartCoroutine(GameOver());
         }
     }
 
     static IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene("GameOver");
     }
 
+    public static int GetScore()
+    {
+        return score;
+    }
 }

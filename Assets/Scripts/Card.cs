@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    int id;
     Sprite face;
     Sprite back;
     SpriteRenderer spriteRenderer;
 
-    bool matched = false;
+    bool isMatched = false;
+    bool isDisappeared = false;
 
     static List<Card> shownCards = new List<Card>();
 
@@ -20,7 +22,7 @@ public class Card : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (matched)
+        if (isMatched)
         {
             return;
         }
@@ -40,8 +42,8 @@ public class Card : MonoBehaviour
 
         if (shownCards.Count == 2 && shownCards[0].face == shownCards[1].face)
         {
-            shownCards[0].matched = true;
-            shownCards[1].matched = true;
+            shownCards[0].isMatched = true;
+            shownCards[1].isMatched = true;
             shownCards.Clear();
             ScoreManager.RaiseScore(25);
         }
@@ -52,13 +54,41 @@ public class Card : MonoBehaviour
 
         if (gameObject.GetComponent<Transform>().localScale.x > 0)
         {
-            gameObject.GetComponent<Transform>().localScale -= 3 * Vector3.one * Time.deltaTime;
+            gameObject.GetComponent<Transform>().localScale -= 2 * Vector3.one * Time.deltaTime;
         }
         else
         {
             gameObject.GetComponent<Transform>().localScale = Vector3.zero;
+            isDisappeared = true;
         }
-        
+
+    }
+    private IEnumerator Appear()
+    {
+        yield return new WaitForSeconds(1);
+        if (gameObject.GetComponent<Transform>().localScale.x < 1)
+        {
+            gameObject.GetComponent<Transform>().localScale += 2.5f * Vector3.one * Time.deltaTime;
+        }
+        else
+        {
+            gameObject.GetComponent<Transform>().localScale = Vector3.one;
+        }
+
+    }
+    private IEnumerator MoveAway()
+    {
+        yield return new WaitForSeconds(1.5f + id/4f);
+        Vector3 xVelocity = new Vector3(2000, 0, 0);
+        if (gameObject.GetComponent<Transform>().position.x < 650)
+        {
+            gameObject.GetComponent<Transform>().position += xVelocity * Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     public void setFace(Sprite face)
@@ -71,11 +101,21 @@ public class Card : MonoBehaviour
         this.back = back;
     }
 
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
     private void Update()
     {
-        if (matched)
+        if (isMatched && !isDisappeared)
         {
             Disappear();
+        }
+        if (ScoreManager.GetScore() == 100)
+        {
+            StartCoroutine(Appear());
+            StartCoroutine(MoveAway());
         }
     }
 }

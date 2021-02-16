@@ -45,6 +45,7 @@ public class CardsManager : MonoBehaviour
             GameObject card = Instantiate(Card, new Vector3(x, y, 0), Quaternion.identity);
             card.GetComponent<Card>().setFace(cardFace);
             card.GetComponent<Card>().setBack(cardBack);
+            card.GetComponent<Card>().setId(k);
             x += 200;
             if (k == 3)
             {
