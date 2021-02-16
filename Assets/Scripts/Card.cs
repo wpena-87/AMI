@@ -20,6 +20,13 @@ public class Card : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    void Start()
+    {
+        Color color = spriteRenderer.color;
+        color.a = 0f;
+        spriteRenderer.color = color;
+    }
+
     public void OnMouseDown()
     {
         if (isMatched)
@@ -79,7 +86,7 @@ public class Card : MonoBehaviour
     private IEnumerator MoveAway()
     {
         yield return new WaitForSeconds(1.5f + id/4f);
-        Vector3 xVelocity = new Vector3(2000, 0, 0);
+        Vector3 xVelocity = new Vector3(3000, 0, 0);
         if (gameObject.GetComponent<Transform>().position.x < 650)
         {
             gameObject.GetComponent<Transform>().position += xVelocity * Time.deltaTime;
@@ -108,6 +115,12 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
+        if (spriteRenderer.color.a < 1)
+        {
+            Color color = spriteRenderer.color;
+            color.a += 4 * Time.deltaTime;
+            spriteRenderer.color = color;
+        }
         if (isMatched && !isDisappeared)
         {
             Disappear();
