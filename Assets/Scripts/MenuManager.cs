@@ -9,9 +9,10 @@ public class MenuManager : MonoBehaviour
     public GameObject[] leftCards;
     public GameObject[] rightCards;
     public Button startButton;
+    public AudioSource startSound;
     int x = -357;
     float timeCounter = 0;
-    readonly float SPEED = 1000;
+    readonly float SPEED = 3000;
     enum State{
         IN,
         OUT,
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
     private void OnStartButtonClick()
     {
         state = State.OUT;
+        startSound.Play();
         startButton.onClick.RemoveAllListeners();
     }
 
@@ -103,7 +105,11 @@ public class MenuManager : MonoBehaviour
                 }
                 break;
             case State.END:
-                SceneManager.LoadScene("InGame");
+                timeCounter += Time.deltaTime;
+                if (timeCounter > 4)
+                {
+                    SceneManager.LoadScene("InGame");
+                }
                 break;
         }
     }
