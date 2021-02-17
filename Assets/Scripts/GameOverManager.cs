@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BehaviorManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
     public Text label;
     public Image logo;
