@@ -204,6 +204,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &685378899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685378901}
+  - component: {fileID: 685378900}
+  m_Layer: 0
+  m_Name: LivesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685378900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685378899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6017d7dc80ab4447a2607f03ef2343f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 1381045222539496308, guid: 6f2730aeea9266d45b985491ec5bba2b,
+    type: 3}
+--- !u!4 &685378901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685378899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -512, y: 384, z: -19.004034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967134278
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +488,7 @@ RectTransform:
   m_Children:
   - {fileID: 1834031342}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -600,7 +645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24496d9ceec13ff41965b9b0246dde87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 949446414628713959, guid: 70e90966af261864d8dec33224039bd3, type: 3}
+  cardPrefab: {fileID: 949446414628713959, guid: 70e90966af261864d8dec33224039bd3,
+    type: 3}
   cardFaces:
   - {fileID: 21300000, guid: 04b7e68eb5005a84da00bba8a41d9d55, type: 3}
   - {fileID: 21300000, guid: d38df1d7c34a229418bb1d0d03643d1b, type: 3}

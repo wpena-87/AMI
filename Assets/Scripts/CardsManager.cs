@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CardsManager : MonoBehaviour
 {
-    public GameObject Card;
+    public GameObject cardPrefab;
     public Sprite[] cardFaces;
     public Sprite cardBack;
+    public static Card[] cards = new Card[8];
     static System.Random random = new System.Random();
     
     void Start()
@@ -40,12 +41,14 @@ public class CardsManager : MonoBehaviour
         int y =  198;
         
         int k = 0;
-        foreach (Sprite cardFace in shuffledFaces)
+        for (int i = 0; i < shuffledFaces.Count; i++)
         {
-            GameObject card = Instantiate(Card, new Vector3(x, y, 0), Quaternion.identity);
-            card.GetComponent<Card>().setFace(cardFace);
-            card.GetComponent<Card>().setBack(cardBack);
-            card.GetComponent<Card>().setId(k);
+            Sprite cardFace = shuffledFaces[i];
+            GameObject card = Instantiate(cardPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            cards[i] = card.GetComponent<Card>();
+            cards[i].setFace(cardFace);
+            cards[i].setBack(cardBack);
+            cards[i].setId(k);
             x += 200;
             if (k == 3)
             {

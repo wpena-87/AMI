@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    static IEnumerator GameOver()
+    private static IEnumerator GameOver()
     {
         yield return new WaitForSeconds(4);
         SceneManager.LoadScene("GameOver");

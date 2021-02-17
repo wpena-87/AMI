@@ -61,7 +61,10 @@ public class Card : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (isMatched || shownCards.Contains(this) || shownCards.Count == 2)
+        if (isMatched ||
+            shownCards.Contains(this) ||
+            shownCards.Count == 2 ||
+            LivesManager.HaveLost())
         {
             return;
         }
@@ -83,6 +86,7 @@ public class Card : MonoBehaviour
             {
                 shownCards[0].canFlip = true;
                 shownCards[1].canFlip = true;
+                LivesManager.DecreaseOneLive();
             }
         }
     }
@@ -149,9 +153,40 @@ public class Card : MonoBehaviour
         this.id = id;
     }
 
+    private void RotateAndVanish()
+    {
+        foreach (Card card in CardsManager.cards)
+        {
+            if (card.canFlip)
+            {
+                return;
+            }
+        }
+        timeCounter += Time.deltaTime;
+        if (timeCounter >= 1)
+        {
+            Vector3 angles = spriteRenderer.transform.rotation.eulerAngles;
+            angles.z += 100 * Time.deltaTime;
+            spriteRenderer.transform.rotation = Quaternion.Euler(angles);
+            Color color = spriteRenderer.color;
+            color.a -= 0.5f * Time.deltaTime;
+            spriteRenderer.color = color;
+            if (spriteRenderer.transform.localScale.x > 0)
+            {
+                spriteRenderer.transform.localScale -= 0.5f * Vector3.one * Time.deltaTime;
+            }
+            
+        }
+        
+    }
+
     private void Update()
     {
-        if (spriteRenderer.color.a < 1)
+        if (LivesManager.HaveLost())
+        {
+            RotateAndVanish();
+        }
+        else if (spriteRenderer.color.a < 1)
         {
             Color color = spriteRenderer.color;
             color.a += 4 * Time.deltaTime;
