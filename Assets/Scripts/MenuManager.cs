@@ -106,7 +106,7 @@ public class MenuManager : MonoBehaviour
                 break;
             case State.END:
                 timeCounter += Time.deltaTime;
-                if (timeCounter > 4)
+                if (timeCounter > 3.325)
                 {
                     SceneManager.LoadScene("InGame");
                 }
