@@ -39,6 +39,7 @@ public class LivesManager : MonoBehaviour
 
     private static IEnumerator GameOver()
     {
+        MusicController.decreaseMusicVolume = true;
         yield return new WaitForSeconds(1.25f);
         GameObject.Find("Vanish").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(4.5f);
