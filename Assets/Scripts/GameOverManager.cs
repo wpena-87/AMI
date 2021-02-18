@@ -16,11 +16,13 @@ public class GameOverManager : MonoBehaviour
         {
             label.text = "You Won!";
             logo.sprite = win;
+            GameObject.Find("Victory").GetComponent<AudioSource>().Play();
         }
         else
         {
             label.text = "You Lost!";
             logo.sprite = loss;
+            GameObject.Find("Defeat").GetComponent<AudioSource>().Play();
             logo.rectTransform.position += new Vector3(0, 100, 0);
         }
     }
