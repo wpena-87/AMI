@@ -23,7 +23,7 @@ public class GameOverManager : MonoBehaviour
             label.text = "You Lost!";
             logo.sprite = loss;
             GameObject.Find("Defeat").GetComponent<AudioSource>().Play();
-            logo.rectTransform.position += new Vector3(0, 100, 0);
+            logo.rectTransform.position += new Vector3(0, 78.125f, 0);
         }
     }
 

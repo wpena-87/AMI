@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject[] rightCards;
     public Button startButton;
     public AudioSource startSound;
+    public AudioSource awakeSound;
     int x = -357;
     float timeCounter = 0;
     readonly float SPEED = 3000;
@@ -30,6 +31,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        awakeSound.Play();
         startButton.onClick.AddListener(OnStartButtonClick);
     }
 
@@ -58,10 +60,11 @@ public class MenuManager : MonoBehaviour
                 MoveButton(1);
                 if (leftCards[0].transform.position.x >= x)
                 {
+                    Vector3 pos;
                     state = State.WAIT;
                     for (int i = 0; i < 4; i++)
                     {
-                        Vector3 pos = leftCards[i].transform.position;
+                        pos = leftCards[i].transform.position;
                         pos.x = x;
                         leftCards[i].transform.position = pos;
 
@@ -69,23 +72,22 @@ public class MenuManager : MonoBehaviour
                         pos.x = x;
                         rightCards[i].transform.position = pos;
 
-                        pos = startButton.transform.localPosition;
-                        pos.y = -250;
-                        startButton.transform.localPosition = pos;
-
                         x += 200;
                     }
+                    pos = startButton.transform.localPosition;
+                    pos.y = -195.3125f;
+                    startButton.transform.localPosition = pos;
                 }
                 break;
             case State.WAIT:
                 timeCounter += Time.deltaTime;
-                if (timeCounter < 0.5)
+                if (timeCounter < 0.75)
                 {
                     Color buttonColor = startButton.image.color;
                     buttonColor.a -= Time.deltaTime;
                     startButton.image.color = buttonColor;
                 }
-                else if (timeCounter < 1)
+                else if (timeCounter < 1.5)
                 {
                     Color buttonColor = startButton.image.color;
                     buttonColor.a += Time.deltaTime;
