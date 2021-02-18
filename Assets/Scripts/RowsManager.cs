@@ -8,11 +8,14 @@ public class RowsManager : MonoBehaviour
 {
     public GameObject rowPrefab;
     public Transform canvas;
+    public Text continueLabel;
+    float timeCounter;
     int y;
 
     void Start()
     {
         y = -66;
+        timeCounter = 0;
         foreach (var item in ScoreManager.leaderboard)
         {
             GameObject row = Instantiate(rowPrefab, canvas);
@@ -32,5 +35,24 @@ public class RowsManager : MonoBehaviour
     void OnMouseDown()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    void Update()
+    {
+        Color color = continueLabel.color;
+        timeCounter += Time.deltaTime;
+        if (timeCounter < 0.75)
+        {
+            color.a -= Time.deltaTime;
+        }
+        else if (timeCounter < 1.5)
+        {
+            color.a += Time.deltaTime;
+        }
+        else
+        {
+            timeCounter = 0;
+        }
+        continueLabel.color = color;
     }
 }
