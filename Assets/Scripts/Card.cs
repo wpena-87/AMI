@@ -215,7 +215,6 @@ public class Card : MonoBehaviour
 
         if (canFlip)
         {
-            Debug.Log("Hola");
             FlipBack();
         }
 
