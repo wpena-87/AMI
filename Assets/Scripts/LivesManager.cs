@@ -43,6 +43,7 @@ public class LivesManager : MonoBehaviour
         yield return new WaitForSeconds(1.25f);
         GameObject.Find("Vanish").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(4.5f);
+        ScoreManager.UpdateLeaderboard();
         SceneManager.LoadScene("GameOver");
     }
 
