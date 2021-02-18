@@ -40,7 +40,9 @@ public class ScoreManager : MonoBehaviour
 
     private static IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
+        GameObject.Find("MoveOut").GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(4.5f);
         SceneManager.LoadScene("GameOver");
     }
 

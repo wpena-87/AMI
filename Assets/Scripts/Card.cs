@@ -16,11 +16,18 @@ public class Card : MonoBehaviour
     bool canFlip = false;
 
     static List<Card> shownCards = new List<Card>();
+    static AudioSource matchSound;
+    static AudioSource wrongSound;
+    static AudioSource clickSound;
+
 
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        matchSound = GameObject.Find("Match").GetComponent<AudioSource>();
+        wrongSound = GameObject.Find("Wrong").GetComponent<AudioSource>();
+        clickSound = GameObject.Find("Click").GetComponent<AudioSource>();
     }
 
     void Start()
@@ -69,6 +76,8 @@ public class Card : MonoBehaviour
             return;
         }
 
+        clickSound.Play();
+
         if (shownCards.Count < 2)
         {
             spriteRenderer.sprite = face;
@@ -81,11 +90,13 @@ public class Card : MonoBehaviour
             {
                 shownCards[0].isMatched = true;
                 shownCards[1].isMatched = true;
+                matchSound.Play();
             }
             else
             {
                 shownCards[0].canFlip = true;
                 shownCards[1].canFlip = true;
+                wrongSound.Play();
                 LivesManager.DecreaseOneLive();
             }
         }
