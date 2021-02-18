@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
 {
     
     private static float score = 0;
+    private static float matches = 0;
     private static Text scoreText;
     private static ScoreManager instance;
 
@@ -32,9 +33,10 @@ public class ScoreManager : MonoBehaviour
     public static void RaiseScore(float points)
     {
         score += points;
+        matches += 0.5f;
         RefreshScoreText();
         
-        if (score == 100)
+        if (matches == 4)
         {
             instance.StartCoroutine(GameOver());
         }
@@ -50,9 +52,9 @@ public class ScoreManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
-    public static float GetScore()
+    public static float GetMacthes ()
     {
-        return score;
+        return matches;
     }
 
 

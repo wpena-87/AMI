@@ -12,7 +12,7 @@ public class GameOverManager : MonoBehaviour
 
     void Start()
     {
-        if (ScoreManager.GetScore() == 100)
+        if (ScoreManager.GetMacthes() == 4)
         {
             label.text = "You Won!";
             logo.sprite = win;

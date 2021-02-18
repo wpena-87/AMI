@@ -119,7 +119,7 @@ public class Card : MonoBehaviour
             isDisappeared = true;
             shownCards.Clear();
             timeCounter = 0;
-            ScoreManager.RaiseScore(12.5f);
+            ScoreManager.RaiseScore(12.5f * LivesManager.getLives());
         }
 
     }
@@ -214,7 +214,7 @@ public class Card : MonoBehaviour
             Disappear();
         }
 
-        if (ScoreManager.GetScore() == 100)
+        if (ScoreManager.GetMacthes() == 4)
         {
             if (timeCounter < 1)
             {
