@@ -6,10 +6,11 @@ public class MusicController : MonoBehaviour
 {
 
     static AudioSource musicSound;
-    public static bool decreaseMusicVolume = false;
+    public static bool decreaseMusicVolume;
 
     void Awake()
     {
+        decreaseMusicVolume = false;
         musicSound = gameObject.GetComponent<AudioSource>();
     }
 

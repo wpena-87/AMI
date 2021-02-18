@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 public class LivesManager : MonoBehaviour
 {
     public GameObject heartPrefab;
-    private static int lives = 3;
-    private static Heart[] hearts = new Heart[lives];
+    private static int lives;
+    private static Heart[] hearts;
     private static LivesManager instance;
-    int x = 410;
-    int y = 160;
+    int x;
+    int y;
 
     void Awake()
     {
+        lives = 3;
+        hearts = new Heart[lives];
+        x = 410;
+        y = 160;
         instance = this;
     }
 
@@ -40,10 +44,10 @@ public class LivesManager : MonoBehaviour
     private static IEnumerator GameOver()
     {
         MusicController.decreaseMusicVolume = true;
+        ScoreManager.UpdateLeaderboard();
         yield return new WaitForSeconds(1.25f);
         GameObject.Find("Vanish").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(4.5f);
-        ScoreManager.UpdateLeaderboard();
         SceneManager.LoadScene("GameOver");
     }
 

@@ -11,10 +11,11 @@ public class Heart : MonoBehaviour
         VANISH,
         NOTHING
     }
-    HeartState state = HeartState.NOTHING;
+    HeartState state;
 
     void Awake()
     {
+        state = HeartState.NOTHING;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

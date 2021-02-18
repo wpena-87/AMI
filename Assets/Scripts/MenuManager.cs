@@ -11,8 +11,8 @@ public class MenuManager : MonoBehaviour
     public Button startButton;
     public AudioSource startSound;
     public AudioSource awakeSound;
-    int x = -357;
-    float timeCounter = 0;
+    int x;
+    float timeCounter;
     readonly float SPEED = 3000;
     enum State{
         IN,
@@ -31,6 +31,9 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+
+        x = -357;
+        timeCounter = 0;
         awakeSound.Play();
         startButton.onClick.AddListener(OnStartButtonClick);
     }

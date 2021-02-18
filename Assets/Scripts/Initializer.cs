@@ -9,14 +9,16 @@ using PlayFab.ClientModels;
 public class Initializer : MonoBehaviour
 {
     public Text label;
-    float timeCounter = 0;
+    float timeCounter;
+    public static string myId;
 
     void Start()
     {
+        timeCounter = 0;
         Login();
     }
 
-    void Login()
+    static void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
@@ -26,16 +28,18 @@ public class Initializer : MonoBehaviour
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
 
-    void OnSuccess(LoginResult result)
+    static void OnSuccess(LoginResult result)
     {
         Debug.Log("Succesful login/register account");
+        myId = result.PlayFabId;
     }
 
-    void OnError(PlayFabError error)
+    static void OnError(PlayFabError error)
     {
         Debug.Log("Error while login/register account");
         Debug.Log(error.GenerateErrorReport());
     }
+
 
     void OnMouseDown()
     {

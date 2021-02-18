@@ -7,11 +7,12 @@ public class CardsManager : MonoBehaviour
     public GameObject cardPrefab;
     public Sprite[] cardFaces;
     public Sprite cardBack;
-    public static Card[] cards = new Card[8];
+    public static Card[] cards;
     static System.Random random = new System.Random();
     
     void Start()
     {
+        cards = new Card[8];
         PlaceCards();
     }
 
