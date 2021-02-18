@@ -3,11 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class Initializer : MonoBehaviour
 {
     public Text label;
     float timeCounter = 0;
+
+    void Start()
+    {
+        Login();
+    }
+
+    void Login()
+    {
+        var request = new LoginWithCustomIDRequest
+        {
+            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CreateAccount = true
+        };
+        PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+    }
+
+    void OnSuccess(LoginResult result)
+    {
+        Debug.Log("Succesful login/register account");
+    }
+
+    void OnError(PlayFabError error)
+    {
+        Debug.Log("Error while login/register account");
+        Debug.Log(error.GenerateErrorReport());
+    }
 
     void OnMouseDown()
     {
