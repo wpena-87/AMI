@@ -5,17 +5,17 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     int id;
-    float timeCounter = 0;
+    float timeCounter;
 
     Sprite face;
     Sprite back;
     SpriteRenderer spriteRenderer;
 
-    bool isMatched = false;
-    bool isDisappeared = false;
-    bool canFlip = false;
+    bool isMatched;
+    bool isDisappeared;
+    bool canFlip;
 
-    static List<Card> shownCards = new List<Card>();
+    static List<Card> shownCards;
     static AudioSource matchSound;
     static AudioSource wrongSound;
     static AudioSource clickSound;
@@ -24,6 +24,13 @@ public class Card : MonoBehaviour
 
     void Awake()
     {
+        timeCounter = 0;
+        isMatched = false;
+        isDisappeared = false;
+        canFlip = true;
+
+        shownCards = new List<Card>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         matchSound = GameObject.Find("Match").GetComponent<AudioSource>();
         wrongSound = GameObject.Find("Wrong").GetComponent<AudioSource>();
@@ -32,6 +39,7 @@ public class Card : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer.sprite = face;
         Color color = spriteRenderer.color;
         color.a = 0f;
         spriteRenderer.color = color;
@@ -71,6 +79,7 @@ public class Card : MonoBehaviour
         if (isMatched ||
             shownCards.Contains(this) ||
             shownCards.Count == 2 ||
+            canFlip ||
             LivesManager.HaveLost())
         {
             return;
@@ -206,6 +215,7 @@ public class Card : MonoBehaviour
 
         if (canFlip)
         {
+            Debug.Log("Hola");
             FlipBack();
         }
 
